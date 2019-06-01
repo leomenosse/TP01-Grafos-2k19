@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="assets/css/canvas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="assets/css/Sidebar-Menu-1.css">
+    <link rel="stylesheet" href="assets/css/Sidebar-Menu.css">
+    <link rel="stylesheet" href="assets/css/SIdebar-Responsive-2-1.css">
+    <link rel="stylesheet" href="assets/css/SIdebar-Responsive-2.css">
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-light navbar-expand-md fixed-top border-light border rounded shadow-lg navigation-clean-button" style="filter: blur(0px) brightness(100%);height: 50px;">
+            <div class="container"><a class="navbar-brand" href="#">Teoria dos Grafos - TP01</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link active text-uppercase text-primary border rounded border-primary shadow-sm d-inline-block flex-grow-1 justify-content-center align-items-center" href="#" style="height: 40px;margin: 5px;">Home</a></li>
+                    </ul><span class="navbar-text actions"> </span></div>
+    </div>
+    </nav>
+    </div>
+    <div style="margin-bottom: 50px;margin-top: 100px;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3 class="border rounded border-primary" style="padding: 5px;">1º Passo:&nbsp;<br></h3>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6 col-md-5">
+                    <div class="border rounded border-primary shadow skills portfolio-info-card">
+                        <div class="row">
+                            <div class="col text-center align-self-center"><label class="col-form-label text-center">Selecione a representação:&nbsp;</label></div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-center align-self-center" style="margin: 5px;margin-bottom: 10px;">
+                                <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="selection_label" style="font-size: 11px;">Selecione...</button>
+                                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#" id="adjlist">Lista de Adjacência</a><a class="dropdown-item" role="presentation" href="#" id="adjmtx">Matriz de Adjacência</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col text-center align-self-center"><label class="col-form-label">Abra seu grafo:</label></div>
+                            <div class="col align-self-center"><button class="btn btn-primary btn-block text-center" type="button" id="fileButton" style="padding: 5px;margin: 5px;">Abrir arquivo</button></div>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col text-right align-self-center"><label class="col-form-label">Nome do arquivo:</label></div>
+                            <div class="col align-self-center"><label class="col-form-label" id="fname_label">*.txt</label></div>
+                        </div><input class="border rounded d-xl-flex" type="file" accept=".txt" id="graph_input" style="opacity: 0;width: 1px;height: 1px;"></div>
+                </div>
+                <div class="col-6">
+                    <div class="text-center border rounded shadow contact-info portfolio-info-card">
+                        <h2>Informações do grafo</h2>
+                        <div class="row">
+                            <div class="col text-right align-self-center"><label class="col-form-label">Representação Computacional:</label></div>
+                            <div class="col text-left align-self-center"><label class="col-form-label" id="label_representacao" style="color: rgb(0,128,255);">???</label></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 text-right"><label class="col-form-label">Orientado:</label></div>
+                            <div class="col text-left align-self-center"><label class="col-form-label" id="label_orientacao" style="color: rgb(0,128,255);">???</label></div>
+                            <div class="col-9"><span></span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 text-right"><label class="col-form-label text-right">Quantidade de nós:</label></div>
+                            <div class="col text-left align-self-center" style="color: rgb(11,133,255);"><label class="col-form-label" id="label_nos">???</label></div>
+                            <div class="col-9"><span></span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 text-right"><label class="col-form-label text-right">Quantidade de arestas:</label></div>
+                            <div class="col text-left align-self-center"><label class="col-form-label" id="label_arestas" style="color: rgb(0,128,255);">???</label></div>
+                            <div class="col-9"><span></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="passo2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col" style="margin-top: 50px;">
+                            <h3 class="border rounded border-primary" style="padding: 5px;">2º Passo:</h3>
+                            <h6>Operações sobre o grafo ou digrafo</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto"><label class="col-form-label">Selecione a operação:</label></div>
+                        <div class="col">
+                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" disabled="disabled" id="btn_operacao">Selecione...</button>
+                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#passo2" id="btn_busca">Busca Completa</a><a class="dropdown-item" role="presentation" href="#" id="btn_buscacaminho">Verificar caminho</a>
+                                    <div class="dropdown-divider"
+                                        role="presentation"></div><a class="dropdown-item" role="presentation" href="#passo2" id="btn_conexo">Verificar componentes conexas</a><a class="dropdown-item" role="presentation" href="#passo2" id="btn_caminho">Encontrar Caminho Mínimo</a>
+                                    <a
+                                        class="dropdown-item" role="presentation" href="#passo2" id="btn_agm">Encontrar Árvore Geradora Mínima</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-auto text-left"><label class="col-form-label text-right">Operação feita:&nbsp;</label></div>
+                                <div class="col-auto text-left align-self-center" style="color: rgb(11,133,255);"><label class="col-form-label" id="label_operacao">???</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col align-self-center">
+                            <div class="row">
+                                <div class="col text-center d-lg-flex align-self-center justify-content-lg-center"><button class="btn btn-primary" type="button" id="btn_reexibir" style="margin: 5px;">Reexibir resultados da operação</button></div>
+                            </div>
+                            <div class="row">
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal_busca">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Busca</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>Selecione o tipo da busca desejada e o nó inicial.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <form>
+                                <div class="form-check" style="margin: 2px;"><input class="form-check-input" type="radio" checked="" id="radiobusca1" name="busca"><label class="form-check-label" for="radiobusca1">Busca em Profundidade</label></div>
+                                <div class="form-check" style="margin: 2px;"><input class="form-check-input" type="radio" id="radiobusca2" name="busca"><label class="form-check-label" for="radiobusca2">Busca em largura</label></div><input class="form-control" type="text" placeholder="Vértice inicial"
+                                    id="no_busca" style="margin: 2px;margin-top: 10px;"></form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancelar</button><button class="btn btn-primary" type="button" id="btn_fazerbusca" data-dismiss="modal">Buscar</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal_buscacaminho">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Busca</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>Selecione o tipo da busca desejada e o nó inicial e o nó final.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <form>
+                                <div class="form-check" style="margin: 2px;"><input class="form-check-input" type="radio" checked="" id="radiobuscacaminho1" name="buscacaminho"><label class="form-check-label" for="radiobuscacaminho1">Busca em Profundidade</label></div>
+                                <div class="form-check" style="margin: 2px;"><input class="form-check-input" type="radio" id="radiobuscacaminho2" name="buscacaminho"><label class="form-check-label" for="radiobuscacaminho2">Busca em largura</label></div><input class="form-control" type="text" placeholder="Vértice inicial"
+                                    id="no_buscaini" style="margin: 2px;margin-top: 10px;"><input class="form-control" type="text" placeholder="Vértice final" id="no_buscafim" style="margin: 2px;margin-top: 10px;"></form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancelar</button><button class="btn btn-primary" type="button" id="btn_fazerbuscacaminho" data-dismiss="modal">Buscar</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal_caminho">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Caminho Mínimo</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>Selecione o algoritmo e o no inicial.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <form>
+                                <div class="form-check" style="margin: 2px;"><input class="form-check-input" type="radio" checked="" id="radiocaminho1" name="caminho"><label class="form-check-label" for="radiocaminho1">Dijkstra</label></div>
+                                <div class="form-check" style="margin: 2px;"><input class="form-check-input" type="radio" id="radiocaminho2" name="caminho"><label class="form-check-label" for="radiocaminho2">Bellman-Ford</label></div><input class="form-control" type="text" placeholder="Vértice inicial"
+                                    id="no_caminhomin" style="margin: 2px;margin-top: 10px;"></form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancelar</button><button class="btn btn-primary" type="button" id="btn_fazercaminho" data-dismiss="modal">Gerar</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal_agm">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">AGM - Árvore Geradora Minima</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>Selecione o algoritmo (no caso do Alg. Prim, escolha o vértice inicial).</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <form>
+                                <div class="form-check" style="margin: 2px;"><input class="form-check-input" type="radio" checked="" id="radioagm1" name="agm"><label class="form-check-label" for="radioagm1">Kruskal</label></div>
+                                <div class="form-check" style="margin: 2px;"><input class="form-check-input" type="radio" id="radioagm2" name="agm"><label class="form-check-label" for="radioagm2">Prim</label></div><input class="form-control" type="text" placeholder="Vértice inicial" id="no_prim"
+                                    style="margin: 2px;margin-top: 10px;"></form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancelar</button><button class="btn btn-primary" type="button" id="btn_fazeragm" data-dismiss="modal">Gerar</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade border rounded" role="dialog" tabindex="-1" id="modal_saida">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Resultados da operação:</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body border rounded border-primary d-flex d-lg-flex justify-content-lg-center align-items-lg-center"
+                    style="height: 100%;width: 95%;margin: 10px;">
+                    <div class="row" style="width: 100%;">
+                        <div class="col d-inline-flex d-lg-flex justify-content-lg-center" style="width: 100%;padding: 8px;"><textarea class="border rounded form-control-lg d-inline-flex d-lg-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-lg-center align-items-lg-center text-monospace" readonly="" id="txtarea_saida" style="height: 100%;width: 100%;font-size: 15px;"></textarea></div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light border rounded border-info" type="button" data-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center justify-content-center align-items-center">
+        <div class="col align-self-center">
+            <h4 style="margin-top: 20px;">Visualização completa do Grafo (ou dígrafo)</h4>
+        </div>
+    </div>
+    <div class="row text-center d-lg-flex justify-content-lg-center" style="height: 500px;">
+        <div class="col-7 text-center d-inline-flex d-lg-flex d-xl-flex flex-column align-self-baseline justify-content-xl-center" style="min-height: 400px;height: 400px;margin: 50px;"><div id="mynetwork" class="shadow-lg" style="height: 100%; width:100%">
+    <div class="vis-network" tabindex="900"
+      style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+      <canvas
+        style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;"
+        width="600" height="500"></canvas></div>
+  </div><button class="btn btn-primary" type="button" id="recenterbtn" style="margin: 5px;">Recentrar</button></div>
+    </div>
+    <footer class="page-footer"></footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Algoritmos/AdjList.js"></script>
+    <script src="assets/js/Algoritmos/AdjMatrix.js"></script>
+    <script src="assets/js/Algoritmos/NumberSet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="assets/js/Manipuladores_interface/events.js"></script>
+    <script src="assets/js/Manipuladores_interface/gerar_instancia_grafo.js"></script>
+    <script src="assets/js/Manipuladores_interface/Main.js"></script>
+    <script src="assets/js/Manipuladores_interface/open_read_graph.js"></script>
+    <script src="assets/js/Manipuladores_interface/testedeconsistencia.js"></script>
+    <script src="assets/js/Manipuladores_interface/Util.js"></script>
+    <script src="assets/js/vis.min.js"></script>
+</body>
+
+</html>
