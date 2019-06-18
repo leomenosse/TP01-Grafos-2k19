@@ -372,7 +372,7 @@ class AdjList {
     ordenacao_topologica(startID) {
         this.DFS(startID);
 
-        for(let i = 0; i < this.node_num - 1; i++){
+        for(let i = 0; i < this.node_num; i++){
             console.log(this.stack.pop());
         }
     }
