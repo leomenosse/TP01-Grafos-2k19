@@ -10,6 +10,7 @@ class AdjList {
         this.directed = directed; //true or false
         this.node_num = node_num;
         this.edges = [];
+        this.stack = []; //ordenação topológica
 
         for (let i = 0; i < node_num; i++) {
             this.edges.push([]);
@@ -95,6 +96,7 @@ class AdjList {
             }
         }
 
+        this.stack.push(node); //ordenação topológica
         this.DFS_data.color[node] = 'p';
         this.DFS_data.f[node] = this.DFS_data.time += 1;
     }
@@ -365,5 +367,13 @@ class AdjList {
             })
             console.log(info);
         })
+    }
+
+    ordenacao_topologica(startID) {
+        this.DFS(startID);
+
+        for(let i = 0; i < this.node_num - 1; i++){
+            console.log(this.stack.pop());
+        }
     }
 }
