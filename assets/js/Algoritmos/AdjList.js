@@ -376,4 +376,48 @@ class AdjList {
             console.log(this.stack.pop());
         }
     }
+
+    colorize(){
+        //inicializando variaveis;
+        let node_color = Array(this.node_num).fill(-1);
+        let avaliable_colors = 0;
+        let sequence = [];
+        let top_node = this.top_degree()
+        for(let i = 0; i < this.node_num; i++){
+            if(i === top_node) sequence.push(i);
+            sequence.unshift(i);
+        }
+
+        // subrotina de coloração
+        let set_color = (nodeID) =>{
+            if (node_color[nodeID] === -1){
+                console.log("entrou")
+                let current_color = 0;
+                let correct_color = true;
+                for(let color = 0; color <= avaliable_colors; color++){
+                    for(let i = 0; i < this.edges[nodeID].length; i++){
+                        let aux = this.edges[nodeID][i].target;
+                        if (node_color[aux] === current_color) {
+                            correct_color = false; break;
+                        }
+                    }
+                    if(correct_color === false) {
+                        current_color = ++avaliable_colors; break;
+                    }
+                }
+
+                node_color[nodeID] = current_color;
+                for(let k = 0; k < this.edges[nodeID].length; k++){
+                    set_color(this.edges[nodeID][k].target);
+                }
+            }
+        }
+
+        for(let j = 0; j < this.node_num; j++){
+            console.log('j :', j);
+            set_color(sequence[j])
+        }
+
+        return node_color;
+    }
 }
