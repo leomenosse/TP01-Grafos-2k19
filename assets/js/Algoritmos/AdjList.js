@@ -10,10 +10,15 @@ class AdjList {
         this.directed = directed; //true or false
         this.node_num = node_num;
         this.edges = [];
+        this.transposed = [];
         this.stack = []; //ordenação topológica
+        this.forests = [];
+        this.forestCount = 0;
 
         for (let i = 0; i < node_num; i++) {
             this.edges.push([]);
+            this.transposed.push([]);
+            //this.forests.push([]);
         }
 
         this.BFS_data = null;
@@ -22,6 +27,7 @@ class AdjList {
 
     add_edge(sourceID, targetID, weight = 1) {
         this.edges[sourceID].push(new edge(targetID, weight))
+        this.transposed[targetID].push(new edge(sourceID, weight));
 
         if (!this.directed) this.edges[targetID].push(new edge(sourceID, weight))
     }
@@ -376,4 +382,68 @@ class AdjList {
             console.log(this.stack.pop());
         }
     }
+
+    transposto(){
+        for(let i = 0; i < this.transposed.length; i++){
+            console.log('O vértice '+i+' vai para:');
+            for(let j = 0; j < this.transposed[i].length; j++){
+                console.log(this.transposed[i][j].target);
+            }
+        }
+    }
+
+    componentes_fortemente_conexas(startID){
+        this.DFS(startID);
+
+        let list = []; //com a ordem decrescente
+        this.forestCount = 0;
+        this.forests = [];
+
+        for (let i = 0; i < this.node_num; i++) {
+            list.push(this.stack.pop());
+            this.forests.push([]);
+        }
+
+        this.DFS_TRANSPOSED(list);
+
+        for(let i = 0; i < this.forestCount; i++){
+            for(let j = 0; j < this.forests[i].length; j++){
+                console.log(this.forests[i][j]);
+            }
+            console.log('');
+        }
+        
+    }
+
+    DFS_TRANSPOSED(list) {
+        this.dfsdata_set(list[0]);
+
+        for (let i in list) {
+            if (this.DFS_data.color[list[i]] === 'b'){
+                this.DFS_VISIT_TRANSPOSED(list[i]);  
+                this.forestCount++;
+            } 
+        }
+
+        return this.DFS_data;
+    }
+
+    DFS_VISIT_TRANSPOSED(node) {
+        this.DFS_data.color[node] = 'c';
+        this.DFS_data.time += 1;
+        this.DFS_data.d[node] = this.DFS_data.time;
+
+        for (let i in this.transposed[node]) {
+            let v = this.transposed[node][i].target;
+            if (this.DFS_data.color[v] === 'b') {
+                this.DFS_data.father[v] = node;
+                this.DFS_VISIT_TRANSPOSED(v)
+            }
+        }
+
+        this.forests[this.forestCount].push(node);
+        this.DFS_data.color[node] = 'p';
+        this.DFS_data.f[node] = this.DFS_data.time += 1;
+    }
+
 }
